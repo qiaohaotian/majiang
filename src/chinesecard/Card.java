@@ -16,7 +16,11 @@ public class Card {
 	}
 	@Override
 	public String toString(){
-		return number +" "+color;
+		return number + color + " ";
+	}
+
+	public boolean equal(Card other){
+		return this.color.equals(other.getColor()) && this.number.equals(other.getNumber());
 	}
 
 }
