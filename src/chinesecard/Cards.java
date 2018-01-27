@@ -31,14 +31,14 @@ public class Cards {
 
 		for( int i=0;i<NUMBER1.length ;i++){
 			 for(int j=0;j<COLOR1.length;j++){
-				 Card card = new Card(NUMBER1[i],COLOR1[j]);
+				 Card card = new Card(NUMBER1[i],COLOR1[j],i);
 				 cards.add(card);
 			 }
 		 }		
 	}
 	private void addFJCards(ArrayList<Card> cards){
 		for(int i=0;i<NUMBER2.length;i++){
-			Card card = new Card(NUMBER2[i],COLOR2[0]);
+			Card card = new Card(NUMBER2[i],COLOR2[0],i);
 			cards.add(card);
 		}
 	}
@@ -46,11 +46,12 @@ public class Cards {
 	private void addCards(ArrayList<Card> cards) {
 
 		for( int i=0;i<NUMBER3.length ;i++){
-				 Card card = new Card(NUMBER3[i],COLOR3[0]);
+				 Card card = new Card(NUMBER3[i],COLOR3[0],i);
 				 cards.add(card);
 			 }
 		 		
 	}
+	//手牌
 	public ArrayList<Card> hands(ArrayList<Card> cards){
 		ArrayList<Card> handcards= new ArrayList<Card>();
 		int a = 136;
