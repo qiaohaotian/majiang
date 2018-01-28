@@ -64,24 +64,15 @@ public class Cards {
 		}
 		return handcards;
 	}
-	public ArrayList<Card> drawCard(ArrayList<Card> cards,ArrayList<Card> allcards){
-		ArrayList<Card> handcards = new ArrayList<Card>();
-		int n = new Random().nextInt(allcards.size());
-		cards.add(allcards.remove(n));
-		cards = Rules.sorthandcard(cards);
-		return cards;
-	}
-	public Card playCard(ArrayList<Card> cards){
-		int a=0;
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	        a = Integer.parseInt(reader.readLine());
-		} catch (IOException e) {
-			e.printStackTrace();
+	public ArrayList<Card> secondDraw(ArrayList<Card> cards){
+		ArrayList<Card> handcards= new ArrayList<Card>();
+		for(int i=0;i<13;i++){
+			int n = new Random().nextInt(cards.size()-i) ;
+			handcards.add(cards.remove(n));
 		}
-		Card deleted = cards.remove(a-1);
-		return deleted;
+		return handcards;
 	}
+
 	
 	
 	
