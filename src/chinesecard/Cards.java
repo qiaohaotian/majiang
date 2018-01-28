@@ -1,5 +1,8 @@
 package chinesecard;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -52,7 +55,7 @@ public class Cards {
 		 		
 	}
 	//手牌
-	public ArrayList<Card> hands(ArrayList<Card> cards){
+	public ArrayList<Card> firstDraw(ArrayList<Card> cards){
 		ArrayList<Card> handcards= new ArrayList<Card>();
 		int a = 136;
 		for(int i=0;i<14;i++){
@@ -60,6 +63,24 @@ public class Cards {
 			handcards.add(cards.remove(n));
 		}
 		return handcards;
+	}
+	public ArrayList<Card> drawCard(ArrayList<Card> cards,ArrayList<Card> allcards){
+		ArrayList<Card> handcards = new ArrayList<Card>();
+		int n = new Random().nextInt(allcards.size());
+		cards.add(allcards.remove(n));
+		cards = Rules.sorthandcard(cards);
+		return cards;
+	}
+	public Card playCard(ArrayList<Card> cards){
+		int a=0;
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	        a = Integer.parseInt(reader.readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Card deleted = cards.remove(a-1);
+		return deleted;
 	}
 	
 	

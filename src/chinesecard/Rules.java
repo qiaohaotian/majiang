@@ -13,7 +13,7 @@ public class Rules {
 		}
 		return sorted;
 	}
-	public ArrayList<Card> sorthandcard(ArrayList<Card> handcards) {
+	public static ArrayList<Card> sorthandcard(ArrayList<Card> handcards) {
 		ArrayList<Card> sorted = new ArrayList<Card>();
 		//分组
 		ArrayList<Card> tiaosorted = groupby(handcards,"条");
@@ -35,8 +35,8 @@ public class Rules {
 		return sorted;
 	}
 	//排序方法
-	public static ArrayList<Card> sort(ArrayList<Card> cards){
-		 
+	private static ArrayList<Card> sort(ArrayList<Card> cards){
+		//ArrayList<Card> handcard = sorthandcard(cards);
 
 		Object[] unsorted = cards.toArray();
 		Object temp;
@@ -46,7 +46,6 @@ public class Rules {
 					temp = unsorted[i];
 					unsorted[i]=unsorted[j];
 					unsorted[j]=temp;
-					System.out.println(4);
 				}
 			}
 		}
