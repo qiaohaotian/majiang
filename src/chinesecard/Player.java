@@ -11,14 +11,21 @@ public class Player {
 
 	public void setHandhards(ArrayList<Card> handcards) {
 		mycards = handcards;
+		Rules.sorthandcard(mycards);
 	}
-	public ArrayList<Card> drawCard(ArrayList<Card> cards,ArrayList<Card> allcards){
-		int n = new Random().nextInt(allcards.size());
-		cards.add(allcards.remove(n));
-		cards = Rules.sorthandcard(cards);
-		return cards;
+	public ArrayList<Card> drawCard(Card card){
+		
+		mycards.add(card);
+		mycards = Rules.sorthandcard(mycards);
+		return mycards;
 	}
-	public Card playCard(ArrayList<Card> cards){
+	public void ShowCards(){
+		for(int i=0;i<mycards.size();i++){
+			 System.out.print(mycards.get(i));
+		 }
+		System.out.println(" ");
+	}
+	public Card playCard(){
 		int a=0;
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +33,7 @@ public class Player {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Card deleted = cards.remove(a-1);
+		Card deleted = mycards.remove(a-1);
 		return deleted;
 	}
 }
