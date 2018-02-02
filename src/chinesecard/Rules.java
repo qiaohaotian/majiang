@@ -55,6 +55,32 @@ public class Rules {
 			
 		}
 		return sorted;
-	}  
-	
+	}
+	public static boolean judgement(Card lastcard,ArrayList<Card> handcard){
+		ArrayList<Card> sorted = groupby(handcard,lastcard.getColor());
+		boolean a = false;
+		int w = lastcard.getNo() - 1;
+		int x = lastcard.getNo() - 2;
+		int y = lastcard.getNo() + 1;
+		int z = lastcard.getNo() + 2;
+		if(judge(w,sorted)&judge(x,sorted)){
+			a=true;
+		}else if(judge(w,sorted)&judge(y,sorted)){
+			a=true;
+		}else if(judge(y,sorted)&judge(z,sorted)){
+			a=true;
+		}
+		return a;
+	}
+	private static  boolean judge(int a,ArrayList<Card> sorted){
+		boolean b = false;
+		for(int i=0;i<sorted.size();i++){
+			if(sorted.get(i).getNo()==a){
+				b = true;
+			}
+		}
+		return b;
+	}
+
+//jieshu
 }

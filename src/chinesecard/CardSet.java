@@ -22,7 +22,8 @@ public class CardSet {
 		 }
 	 }
 	 public Card randomCard(){
-		 int n = new Random().nextInt();
+		 
+		 int n = new Random().nextInt(cardsPile.size());
 		 return cardsPile.remove(n);
 	 }
 	private void addBaseCards() {
@@ -55,11 +56,12 @@ public class CardSet {
 	}
 	public ArrayList<Card> firstDraw(){
 		ArrayList<Card> handcards= new ArrayList<Card>();
-		int a = 136;
+		int a = cardsPile.size();
 		for(int i=0;i<13;i++){
 			int n = new Random().nextInt(a-i) ;
 			handcards.add(cardsPile.remove(n));
 		}
+		handcards=Rules.sorthandcard(handcards);
 		return handcards;
 	}
 	public boolean empty() {
