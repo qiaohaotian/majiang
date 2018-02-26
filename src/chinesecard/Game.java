@@ -16,7 +16,6 @@ public class Game {
     		player[i].setHandhards(cardSet.firstDraw());
         }
         int i=0;
-        int j=0;
 		while(!cardSet.empty()){
 			if(lastCard == null){
 				nomalOrder(cardSet, i);
@@ -41,10 +40,10 @@ public class Game {
 						player[i].ShowCards();
 						System.out.println(lastCard);
 					}else{
-						nomalOrder(cardSet, i);
+						nomalOrder(cardSet,i);
 					}
 				}else{
-					nomalOrder(cardSet, i);
+					nomalOrder(cardSet,i);
 				}
 			}
 			i = (i+1)%2;

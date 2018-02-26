@@ -81,6 +81,5 @@ public class Rules {
 		}
 		return b;
 	}
-
 //jieshu
 }

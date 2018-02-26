@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class CardSet {
 	private ArrayList<Card> cardsPile = new ArrayList<Card>();
-	private ArrayList<Card> discardPile = new ArrayList<Card>();
-	
+	private ArrayList<Card> discardPile = new ArrayList<Card>();	
 	 static String[] NUMBER1 = new String[]{"1","2","3","4","5","6","7","8","9"};
 	 static String[] COLOR1 = new String[]{"条","饼","万"};
 	 static String[] NUMBER2 = new String[]{"东","西","南","北"};
@@ -21,13 +20,11 @@ public class CardSet {
 			addCards();
 		 }
 	 }
-	 public Card randomCard(){
-		 
+	 public Card randomCard(){		 
 		 int n = new Random().nextInt(cardsPile.size());
 		 return cardsPile.remove(n);
 	 }
 	private void addBaseCards() {
-
 		for( int i=0;i<NUMBER1.length ;i++){
 			 for(int j=0;j<COLOR1.length;j++){
 				 Card card = new Card(NUMBER1[i],COLOR1[j],i);
@@ -41,14 +38,11 @@ public class CardSet {
 			cardsPile.add(card);
 		}
 	}
-	
 	private void addCards() {
-
 		for( int i=0;i<NUMBER3.length ;i++){
 				 Card card = new Card(NUMBER3[i],COLOR3[0],i);
 				 cardsPile.add(card);
 			 }
-		 		
 	}
 	//手牌
 	public void gether(Card card){
