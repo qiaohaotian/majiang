@@ -8,7 +8,7 @@ public class Game {
 	private Card lastCard =null;
 	private Player[] player = {new Player(),new Player(),new Player(),new Player()};
 	
-	public void run(){
+	public void excute(){
         CardSet cardSet = new CardSet();
         cardSet.create();
         for(int i=0;i<2;i++){
@@ -61,6 +61,7 @@ public class Game {
 	}
 	public static void main(String[] args){
 		Game game= new Game();
-		game.run();
+		Game g1= new Game();
+		game.excute();
 	}
 }

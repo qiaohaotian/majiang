@@ -27,6 +27,9 @@ public class Card {
 	public String toString(){
 		return number + color + " ";
 	}
+	public String transform(){
+		return number+" "+color+" "+String.format("%d",no)+" ";
+	}
 	
 	public boolean equal(Card other){
 		return this.color.equals(other.getColor()) && this.number.equals(other.getNumber());

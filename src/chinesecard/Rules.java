@@ -81,5 +81,22 @@ public class Rules {
 		}
 		return b;
 	}
+	public static String transformStr(ArrayList<Card> handcard){
+		String a = "";
+		for(int i=0;i<handcard.size();i++){
+			a=a+handcard.get(i).transform();
+		}
+		return a;
+	}
+	public static ArrayList<Card> transformArr(String inStr){
+		ArrayList<Card> handcard = new ArrayList<Card>();
+		String[] ss =new String[1000];
+		ss=inStr.split(" ");
+		for(int i=0;i<ss.length;i=i+3){
+			Card card = new Card(ss[i],ss[i+1],Integer.parseInt(ss[i+2]));
+			handcard.add(card);
+		}
+		return handcard;
+	}
 //jieshu
 }
