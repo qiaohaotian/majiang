@@ -24,11 +24,25 @@ public class Server
 	            	Player player = new Player();
 	            	CardSet cardSet = new CardSet();
 	                cardSet.create();
-	            	player.setHandhards(cardSet.firstDraw());
-	            	player.ShowCards();           	
+	            	player.setHandhards(cardSet.firstDraw());           	
 	            	DataOutputStream out = new DataOutputStream(server.getOutputStream());
 	            	String outStr= Rules.transformStr(player.getHandhards());
 	            	out.writeUTF(outStr);
+	            	while(true){
+	            		if(in.readInt()==1){
+	            			player.drawCard(cardSet.randomCard());
+	            			if(Hule.hule(player.getHandhards())){
+	            				out.writeUTF("胡了");
+	            				out.writeUTF(Rules.transformStr(player.getHandhards()));
+	            				break;
+	            			}else{
+	            				out.writeUTF(Rules.transformStr(player.getHandhards()));	            				
+	            				player.playCard(in.readInt());	            				
+	            				cardSet.gether(lastCard);	            				
+	            				out.writeUTF(Rules.transformStr(player.getHandhards()));
+            			    }	            			
+	            		}
+	            	}
 	            }
 	            server.close();
 	         }catch(IOException e)

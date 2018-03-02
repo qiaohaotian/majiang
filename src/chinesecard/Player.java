@@ -28,15 +28,7 @@ public class Player {
 		 }
 		System.out.println(" ");
 	}
-	public Card playCard(){
-		int a=0;
-		System.out.println("请打一张牌");
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	        a = Integer.parseInt(reader.readLine());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public Card playCard(int a){
 		Card deleted = mycards.remove(a-1);
 		return deleted;
 	}

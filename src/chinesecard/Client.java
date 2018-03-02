@@ -25,18 +25,46 @@ public class Client {
 					e.printStackTrace();
 				}
 	         Socket client = new Socket(serverName, port);
-	         DataOutputStream out = new DataOutputStream(client.getOutputStream());	 
+	         DataOutputStream out = new DataOutputStream(client.getOutputStream());	
+	         Player player = new Player();
 	         if(a.equals("开始游戏")){
 	        	 out.writeUTF(a);
 	         }
 	         InputStream inFromServer = client.getInputStream();
 	         DataInputStream in = new DataInputStream(inFromServer);
 	         String inStr = in.readUTF();
-	         System.out.println(inStr);
 	         ArrayList<Card> handcard = Rules.transformArr(inStr);
-	         for(int i=0;i<handcard.size();i++){
-				 System.out.print((i+1)+":"+handcard.get(i));
-			 }
+	         player.setHandhards(handcard);
+	         while(!Hule.hule(player.getHandhards())){
+	        	 if(player.getHandhards().size()<14){
+	        		 out.writeInt(1);
+	        		 String ll = "";
+	        		 ll = in.readUTF();
+	        		 if(ll=="胡了"){
+	        			 player.setHandhards(Rules.transformArr(in.readUTF()));
+	        			 player.ShowCards();
+	        			 System.out.println("aaaa");
+	        			 break;
+	        		 }else{
+	        			 player.setHandhards(Rules.transformArr(ll));
+	        			 System.out.println("你的手牌：");
+		        		 player.ShowCards();
+		        		 int b=0;
+		        		 System.out.println("请打一张牌");
+		        		 try {
+		        			 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		        		     b = Integer.parseInt(reader.readLine());
+		        		 }catch (IOException e) {
+		        				e.printStackTrace();
+		        			}
+		        		 out.writeInt(b);
+		        		 player.setHandhards(Rules.transformArr(in.readUTF()));
+		        		 player.ShowCards();
+	        		 }
+	        		 
+	        	 }
+	         }
+	         System.out.println("恭喜");
 	         client.close();
 	      }catch(IOException e)
 	      {

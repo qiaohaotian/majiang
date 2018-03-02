@@ -35,7 +35,7 @@ public class Game {
 						System.out.println(lastCard);
 						player[i].drawCard(lastCard);
 						player[i].ShowCards();
-						lastCard = player[i].playCard();
+						lastCard = player[i].playCard(1);
 						cardSet.gether(lastCard);
 						player[i].ShowCards();
 						System.out.println(lastCard);
@@ -53,7 +53,15 @@ public class Game {
 		System.out.println("p"+i+"玩家的牌是");
 		player[i].drawCard(cardSet.randomCard());			 
 		player[i].ShowCards();
-		lastCard = player[i].playCard();
+		int b=0;
+		 System.out.println("请打一张牌");
+		 try {
+			 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		     b = Integer.parseInt(reader.readLine());
+		 }catch (IOException e) {
+				e.printStackTrace();
+			}
+		lastCard = player[i].playCard(b);
 		cardSet.gether(lastCard);
 		System.out.println("打出的是"+lastCard);
 		player[i].ShowCards();
